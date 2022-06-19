@@ -18,16 +18,28 @@ otherwise plagiarized the work of other students and/or persons.
 #define IS_VALID(x) (((x >= 'a' &&  x <= 'z') || (x >= 'A' && x <= 'Z')) ? TRUE : FALSE)
 
 
+typedef char data[MAX_CHAR]; 
 
-typedef char data[MAX_CHAR];
-
+/**
+* @brief
+*.
+* @param name The name of the character.
+* @param life The 
+**/
 typedef struct 
 {
     int life;
 	data name;
 } NovelData;
 
-//Function Prototypes 
+//Function Prototypes
+
+
+/*
+	Function description: 
+	@param
+	@param 
+*/
 void promptName (NovelData *story);
 int randomizer (int nNum);
 void showLife (NovelData *story);
@@ -38,12 +50,15 @@ int HallChoice ();
 void Classroom ();
 int InvestigateLockers ();
 int InvestigateLockerA ();
+int InvestigateLockerATRUE(NovelData *story);
 int InvestigateLockerB ();
+void InvestigateLockerBTRUE(NovelData *story);
+void FindChalkTRUE(NovelData *story);
+
 int Library (NovelData *story);
 int CheckBookshelves ();
 void Light (NovelData *story);
 int PickUp (int nChoice);
-int InvestigateLockerATRUE(NovelData *story);
 int InvestigateBookShelvesTRUE(NovelData *story);
 int nNameChecker (); 
 int nFirstLogicalPuzzle (NovelData *story);

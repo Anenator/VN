@@ -96,7 +96,7 @@ int InvestigateLockerA (){
 }
 
 int InvestigateLockerB (){
-  int nChoice;
+int nChoice;
 do	
   {
 	printf("Do you wish to open locker B?\n");
@@ -108,6 +108,27 @@ do
  return nChoice;
 
 }
+
+
+
+void FindChalkTRUE(NovelData *story){
+	printf("After %s picked up the chalk...\n", (story->name));
+printf("%s silently walked outside of the classroom and went to the library.\n", (story->name));
+	
+} 
+
+void InvestigateLockerBTRUE(NovelData *story){
+	printf("When %s opens the locker...\n", (story->name));
+printf("%s found a chalk.\n", (story->name));
+	
+} 
+
+void InvestigateLockerBFALSE(NovelData *story){
+	printf("As %s walks away from the lockers...\n", (story->name));
+printf("The blackboard on the other side of the room spells out a question.\n", (story->name));
+	
+}
+
 int Library (NovelData *story){
 	printf("%s walks into the library...\n",(story->name));
 	printf("%s sees some bookshelves...\n",(story->name));
@@ -137,6 +158,12 @@ void Light (NovelData *story){
 	printf("It turned out to be a candle.\n");
 }
 
+void BeforeScissorLady(NovelData *story){
+	printf("%s feels an ominous and great aura...\n",(story->name));
+	printf("The Scissor Lady appears from darkness...\n",(story->name));
+	printf("Suddenly... The doors in the Library shut close...\n",(story->name));
+	printf("It is time to face the Scissor Lady\n");
+}
 
 int PickUp (int nChoice){
 	do	
@@ -146,9 +173,11 @@ int PickUp (int nChoice){
 		printf("2) No\n");
 		scanf("%d", &nChoice);
 	} while (nChoice != 1 && nChoice != 2);
-	
-	return nChoice;
+	if(nChoice == 1)
+		return 1;
+	return 0;
 }
+
 
 int InvestigateLockerATRUE(NovelData *story){
 	printf("As %s opens locker A..\n",(story->name));
@@ -159,14 +188,8 @@ int InvestigateLockerATRUE(NovelData *story){
 	printf("On the table of one of %s’s classmates that disappeared...\n",(story->name));
 	printf("Was a bracelet made by their mother.\n");
 	printf("It turned out to be a candle.\n");
+	
 	return 0;
-
-
-
-
-
-
-
 }
 
 
@@ -178,6 +201,7 @@ int InvestigateBookShelvesTRUE(NovelData *story){
 	printf("Truth wanted to take %s into its fairytale...\n",(story->name));
 	printf("But would not do so under one condition...\n");
 	printf("If %s is able to answer his question correctly...\n",(story->name));
+	
 	return 0;
 }
 
@@ -244,9 +268,8 @@ int BadEnding3 (NovelData *story){
 
 int BadEnding4 (NovelData *story){
 	int over;
-	printf("%s decides to take a closer look at the figure.\n",(story->name));
-	printf("It turned out to be Miruki, one of the marked souls by the Scissor Lady!!\n");
-	printf("Miruki doesn't hesitate to strike an unarmed %s.\n",(story->name));
+	printf("%s does not have any of the items to exorcise Scissor Lady...\n",(story->name));
+	printf("Scissor Lady strikes %s...\n",(story->name));
 	printf("Bad Ending\n");
 	return over = 1;
 }
@@ -288,14 +311,17 @@ int nQuiz (NovelData *story){
 int nWhichQuiz = 0;
 	switch(randomizer (nWhichQuiz)) {
 	case 1 :
-	nFirstArithmeticPuzzle (story);
-	break;
+		if(nFirstArithmeticPuzzle (story));
+			return 1;
+		break;
 	case 2 :
-	nSecondArithmeticPuzzle (story);
-	break;
+		if(nSecondArithmeticPuzzle (story));
+			return 1;
+		break;
 	case 3 :
-	nFirstLogicalPuzzle (story);
-	break;
+		if(nSecondArithmeticPuzzle (story));
+			return 1;
+		break;
 	}
 	return 0;
 }
@@ -333,7 +359,7 @@ int nFirstArithmeticPuzzle (NovelData *story){
 }
 
 
-int nSecondArithmeticPuzzle (NovelData *story){
+int nFirstLogicalPuzzle (NovelData *story){
 	int nAnswer;
 	printf("The person who built it sold it. The person who bought it never used it.\n ");
 	printf("The person who used it never saw it. What is it?\n");
@@ -353,7 +379,7 @@ int nSecondArithmeticPuzzle (NovelData *story){
 		else if(nAnswer != 3) {
 			story->life--;
 			printf ("Incorrect answer! Try again..\n");
-			printf("%s\n%s\n%s\n%s\n", "[1] A car",
+			printf("%s\n%s\n%s\n%s\n", "[1] A car", 
 					"[2] A coffin",
 					"[3] A house",
 					"[4] All of the above.");
@@ -361,7 +387,7 @@ int nSecondArithmeticPuzzle (NovelData *story){
 	} while(nAnswer != 3);
 	return 0;
 }
-int nFirstLogicalPuzzle (NovelData *story){
+int nSecondArithmeticPuzzle (NovelData *story){
 	int nAnswer;
 	printf("If a pumpkin pie weighs four pounds and is sliced in half while each half is\n ");
 	printf("sliced into thirds, what is the weight, in ounces, of each slice?\n");
@@ -392,14 +418,11 @@ int nFirstLogicalPuzzle (NovelData *story){
 	return 0;
 }
 
-int nNameChecker (){
-        data name;
+int nNameChecker (NovelData *story){
         int i, is_valid = TRUE;
-        puts("Enter name (No Special characters nor numbers):  ");
-        scanf (" %[^\n]s", name);
-        for (i = 0; i < strlen(name); i++)
+        for (i = 0; i < strlen(story->name); i++)
         { 
-                if (IS_VALID (name[i]) == FALSE) 
+                if (IS_VALID (story->name[i]) == FALSE) 
                         is_valid = FALSE;
         }
                 if (is_valid == TRUE) 
