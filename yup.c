@@ -6,7 +6,7 @@ otherwise plagiarized the work of other students and/or persons.
 Eros Aneelouv A. Gonzaga, DLSU ID# 12120952
 *********************************************************************************************************/
 #include "utils.h"
-
+#include "codes.c"
 
 int main() 
 {
@@ -34,7 +34,7 @@ int main()
 	// printf("greetings traveller");
 
 	Introduction ();
-	//NameSelection (temp->character.name);
+	NameSelection (&story);
 	Hall ();
 	nChoice = HallChoice ();
 	if (nChoice == 1){

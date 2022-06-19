@@ -153,9 +153,12 @@ do
 
 int InvestigateBookShelvesTRUE(NovelData *story){
 	printf("As %s investigates the bookshelves...\n",(story->name));
-	printf("%s sees a peculiar source of light...\n",(story->name));
-	printf("%s walks slowly to the light source...\n",(story->name));
-	printf("It turned out to be a candle.\n",(story->name));
+	printf("A grim looking book jumped out on of the bookshelves and opened itself up...\n");
+	printf("It called itself Truth...\n");
+	printf("Truth wanted to take %s into its fairytale...\n",(story->name));
+	printf("But would not do so under one condition...\n",(story->name));
+	printf("If %s is able to answer his question correctly...\n",(story->name));
+	
 }
 
 //Endings
@@ -211,11 +214,10 @@ int BadEnding2 (NovelData *story){
 
 int BadEnding2 (NovelData *story){
 	int over;
-	printf("As some books continued to fall...\n");
-	printf("%s was able to see to the other side of the bookcase...\n",(story->name));
-	printf("There was a figure...");
-	printf("It turned out to be Miruki, one of the marked souls by the Scissor Lady!!\n");
-	printf("Miruki doesn't hesitate to strike an unarmed %s.\n",(story->name));
+	printf("As %s failed to answer Truth's puzzle...\n",(story->name));
+	printf("Truth became two times his size and sucked %s\n",(story->name));
+	printf("As Truth closes his pages, he belches...\n");
+	printf("%s was eaten by Truth.\n",(story->name));
 	printf("Bad Ending\n");
 	return over = 1;
 }
@@ -280,25 +282,32 @@ int nWhichQuiz = 0;
 
 int nFirstArithmeticPuzzle (NovelData *story){
 	int nAnswer;
-	do{	printf("if one year for Onis is equivalent to seven human years.\n");
-	printf("How long has an Oni been haunting a 37 year old human\n ");
-	printf("considering the Oni has been haunting since birth, in Oni years?\n");
-	printf("%s\n%s\n%s\n%s\n", "[1] 37 years",
-				   "[2] 1 year",
-				   "[3] 259 years",
-				   "[4] None of the above.");
-				   scanf("%d",nAnswer);
-	if(nAnswer == 3) return 1; }
-	while(nAnswer != 3);
-	{
-		story->life--;
-		printf ("Incorrect answer! Try again..\n");
-		printf("%s\n%s\n%s\n%s\n", "[1] 37 years",
-				   "[2] 1 year",
-				   "[3] 259 years",
-				   "[4] None of the above.");
-				   scanf("%d",nAnswer);
-	};
+	printf("if one year for Onis is equivalent to seven human years.\n");
+		printf("How long has an Oni been haunting a 37 year old human\n ");
+		printf("considering the Oni has been haunting since birth, in Oni years?\n");
+		printf("%s\n%s\n%s\n%s\n", 
+				"[1] 37 years",
+				"[2] 1 year",
+				"[3] 259 years",
+				"[4] None of the above.");
+	do {	
+		if(story->life == 0) {
+			return 0;
+		}
+		scanf("%d",nAnswer);
+		if(nAnswer == 3) 
+			return 1;
+		if(nAnswer != 3) {
+			story->life--;
+			printf ("Incorrect answer! Try again..\n");
+			printf("%s\n%s\n%s\n%s\n",
+					"[1] 37 years",
+					"[2] 1 year",
+					"[3] 259 years",
+					"[4] None of the above.");
+		}
+	} while(nAnswer != 3);
+
 	return 0;
 }
 
