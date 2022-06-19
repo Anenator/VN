@@ -1,4 +1,4 @@
-int randomizer (){
+int randomizer (int nNum){
 	int nNum = rand() % 3;
 	return nNum;
 }
@@ -30,46 +30,35 @@ void NameSelection (name[]){
 
 // check sleep function : https://linuxhint.com/sleep-function-c/ 
 int nQuiz (){
-int nAnswer // r u planning to code ur quizzes in one function?
-			// yes, is that bad??
-	switch(randomizer ()) {
+int nWhichQuiz = 0;
+	switch(randomizer (nWhichQuiz)) {
 	case 1 :
-	printf("if one year for Onis is equivalent to seven human years.\n");
-	printf("How long has an Oni been haunting a 37 year old human\n ");
-	printf("considering the Oni has been haunting since birth, in Oni years?\n");
-	printf("%s\n%s\n%s\n%s\n", "[1] 37 years",
-				   "[2] 1 year",
-				   "[3] 259 years",
-				   "[4] None of the above."); //suggestion
+	nFirstArithmeticQuiz (int *nLife);
 	break;
 	case 2 :
-	printf("The person who built it sold it. The person who bought it never used it.\n ");
-	printf("The person who used it never saw it. What is it?\n");
-	printf("%s\n%s\n%s\n%s\n", "[1] A car",
-				   "[2] A coffin",
-				   "[3] A house",
-				   "[4] All of the above."); //suggestion
+	nSecondArithmeticQuiz (int *nLife);
 	break;
 	case 3 :
-	printf("If a pumpkin pie weighs four pounds and is sliced in half while each half is\n ");
-	printf("sliced into thirds, what is the weight, in ounces, of each slice?\n");
-	printf("(HINT: a pound equals sixteen ounces)\n");
-         	printf("%s\n%s\n%s\n%s\n", "[1] 64",
-				   "[2] 4",
-				   "[3] 16",
-				   "[4] 8");
+	nFirstLogicalQuiz (int *nLife);
 	break;
 	
 	}
 }
-int nFirstArithmeticQuiz (){
-	printf("if one year for Onis is equivalent to seven human years.\n");
+int nFirstArithmeticQuiz (int *nLife){
+	int nAnswer = 0;
+	do{	printf("if one year for Onis is equivalent to seven human years.\n");
 	printf("How long has an Oni been haunting a 37 year old human\n ");
 	printf("considering the Oni has been haunting since birth, in Oni years?\n");
 	printf("%s\n%s\n%s\n%s\n", "[1] 37 years",
 				   "[2] 1 year",
 				   "[3] 259 years",
 				   "[4] None of the above.");
+				   scanf("%d",nAnswer);
+	if(nAnswer != 3) 
+	--nLife;}
+
+	while(nAnswer != 3);
+
 	return 0;
 }
 int nSecondArithmeticQuiz (){
