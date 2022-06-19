@@ -34,11 +34,15 @@ int main()
 	// printf("greetings traveller");
 
 	Introduction ();
-	NameSelection (temp->character.name);
+	//NameSelection (temp->character.name);
 	Hall ();
 	nChoice = HallChoice ();
 	if (nChoice == 1){
-
+       Classroom ();
+	   InvestigateLockers ();
+	}
+	else if (nChoice == 2){
+		Library ();
 	}
 	
 	
