@@ -6,13 +6,12 @@ void promptName (NovelData *story){
 }
 
 int randomizer (int nNum){
-	int nNum = rand() % 3;
+	nNum = rand() % 3;
 	return nNum;
 }
 	 
-int nLifeCounter (int *nLife){
-	nLife -= 1;
-	return nLife;
+void showLife (NovelData *story){
+	printf("%d",story->life);
 }
 
 void Introduction (){
@@ -114,6 +113,7 @@ int Library (NovelData *story){
 	printf("%s sees some bookshelves...\n",(story->name));
 	printf("One of the bookshelves shook on its own...\n");
 	printf("Some books fell on the floor. \n");
+	return 0;
 }
 
 int CheckBookshelves (){
@@ -134,31 +134,51 @@ void Light (NovelData *story){
 	printf("As %s walks further into the library...\n",(story->name));
 	printf("%s sees a peculiar source of light...\n",(story->name));
 	printf("%s walks slowly to the light source...\n",(story->name));
-	printf("It turned out to be a candle.\n",(story->name));
+	printf("It turned out to be a candle.\n");
 }
 
 
-int PickUp (){
-  int nChoice;
-do	
-  {
-	printf("Do you wish to pick it up?\n");
-	printf("1) Yes\n");
-	printf("2) No\n");
-	scanf("%d", &nChoice);
-  } while (nChoice != 1 && nChoice != 2);
- 
- return nChoice;
+int PickUp (int nChoice){
+	do	
+	{
+		printf("Do you wish to pick it up?\n");
+		printf("1) Yes\n");
+		printf("2) No\n");
+		scanf("%d", &nChoice);
+	} while (nChoice != 1 && nChoice != 2);
+	
+	return nChoice;
 }
+
+int InvestigateLockerATRUE(NovelData *story){
+	printf("As %s opens locker A..\n",(story->name));
+	printf("%s A small mice runs out...\n",(story->name));
+	printf("%s was frightened and walked away briskly...\n",(story->name));
+	printf("While <insert name> was walking away from the lockers...\n");
+	printf("Some object caught %s's eye...\n",(story->name));
+	printf("On the table of one of %s’s classmates that disappeared...\n",(story->name));
+	printf("Was a bracelet made by their mother.\n");
+	printf("It turned out to be a candle.\n");
+	return 0;
+
+
+
+
+
+
+
+}
+
+
 
 int InvestigateBookShelvesTRUE(NovelData *story){
 	printf("As %s investigates the bookshelves...\n",(story->name));
 	printf("A grim looking book jumped out on of the bookshelves and opened itself up...\n");
 	printf("It called itself Truth...\n");
 	printf("Truth wanted to take %s into its fairytale...\n",(story->name));
-	printf("But would not do so under one condition...\n",(story->name));
+	printf("But would not do so under one condition...\n");
 	printf("If %s is able to answer his question correctly...\n",(story->name));
-	
+	return 0;
 }
 
 //Endings
@@ -212,7 +232,7 @@ int BadEnding2 (NovelData *story){
 	return over = 1;
 }
 
-int BadEnding2 (NovelData *story){
+int BadEnding3 (NovelData *story){
 	int over;
 	printf("As %s failed to answer Truth's puzzle...\n",(story->name));
 	printf("Truth became two times his size and sucked %s\n",(story->name));
@@ -222,7 +242,7 @@ int BadEnding2 (NovelData *story){
 	return over = 1;
 }
 
-int BadEnding3 (NovelData *story){
+int BadEnding4 (NovelData *story){
 	int over;
 	printf("%s decides to take a closer look at the figure.\n",(story->name));
 	printf("It turned out to be Miruki, one of the marked souls by the Scissor Lady!!\n");
@@ -276,28 +296,29 @@ int nWhichQuiz = 0;
 	case 3 :
 	nFirstLogicalPuzzle (story);
 	break;
-	
 	}
+	return 0;
 }
 
 int nFirstArithmeticPuzzle (NovelData *story){
 	int nAnswer;
 	printf("if one year for Onis is equivalent to seven human years.\n");
-		printf("How long has an Oni been haunting a 37 year old human\n ");
-		printf("considering the Oni has been haunting since birth, in Oni years?\n");
-		printf("%s\n%s\n%s\n%s\n", 
-				"[1] 37 years",
-				"[2] 1 year",
-				"[3] 259 years",
-				"[4] None of the above.");
+	printf("How long has an Oni been haunting a 37 year old human\n ");
+	printf("considering the Oni has been haunting since birth, in Oni years?\n");
+	printf("%s\n%s\n%s\n%s\n", 
+			"[1] 37 years",
+			"[2] 1 year",
+			"[3] 259 years",
+			"[4] None of the above.");
 	do {	
+		showLife(story);
 		if(story->life == 0) {
 			return 0;
 		}
-		scanf("%d",nAnswer);
+		scanf("%d", &nAnswer);
 		if(nAnswer == 3) 
 			return 1;
-		if(nAnswer != 3) {
+		else if(nAnswer != 3) {
 			story->life--;
 			printf ("Incorrect answer! Try again..\n");
 			printf("%s\n%s\n%s\n%s\n",
@@ -314,46 +335,60 @@ int nFirstArithmeticPuzzle (NovelData *story){
 
 int nSecondArithmeticPuzzle (NovelData *story){
 	int nAnswer;
-	do {printf("The person who built it sold it. The person who bought it never used it.\n ");
+	printf("The person who built it sold it. The person who bought it never used it.\n ");
 	printf("The person who used it never saw it. What is it?\n");
-	printf("%s\n%s\n%s\n%s\n", "[1] A car",
-				   "[2] A coffin",
-				   "[3] A house",
-				   "[4] All of the above.");
-		 if(nAnswer == 3) return 1; }
-		 while(nAnswer != 3);
-	{
-		story->character.life--;
-		printf ("Incorrect answer! Try again..\n");
-	    printf("%s\n%s\n%s\n%s\n", "[1] A car",
-				   "[2] A coffin",
-				   "[3] A house",
-				   "[4] All of the above.");
-				   scanf("%d",nAnswer);
-	};
+	printf("%s\n%s\n%s\n%s\n", 
+			"[1] A car",
+			"[2] A coffin",
+			"[3] A house",
+			"[4] All of the above.");
+	do {	
+		showLife(story);
+		if(story->life == 0) { 
+			return 0;
+		}
+		scanf("%d", &nAnswer);
+		if(nAnswer == 3) 
+			return 1;
+		else if(nAnswer != 3) {
+			story->life--;
+			printf ("Incorrect answer! Try again..\n");
+			printf("%s\n%s\n%s\n%s\n", "[1] A car",
+					"[2] A coffin",
+					"[3] A house",
+					"[4] All of the above.");
+		}	
+	} while(nAnswer != 3);
 	return 0;
-
 }
 int nFirstLogicalPuzzle (NovelData *story){
 	int nAnswer;
-	do{ printf("If a pumpkin pie weighs four pounds and is sliced in half while each half is\n ");
+	printf("If a pumpkin pie weighs four pounds and is sliced in half while each half is\n ");
 	printf("sliced into thirds, what is the weight, in ounces, of each slice?\n");
 	printf("(HINT: a pound equals sixteen ounces)\n");
-    printf("%s\n%s\n%s\n%s\n", "[1] 64",
-				   "[2] 4",
-				   "[3] 16",
-				   "[4] 8");
-	 if(nAnswer == 3) return 1; }
-	 while(nAnswer != 3);
-	{
-		story->character.life--;
-		printf ("Incorrect answer! Try again..\n");
-        printf("%s\n%s\n%s\n%s\n", "[1] 64",
-				   "[2] 4",
-				   "[3] 16",
-				   "[4] 8");
-				   scanf("%d",nAnswer);
-	};
+    printf("%s\n%s\n%s\n%s\n", 
+			"[1] 64",
+			"[2] 4",
+			"[3] 16",
+			"[4] 8");
+	do {	
+		showLife(story);
+		if(story->life == 0) {
+			return 0;
+		}
+		scanf("%d", &nAnswer);
+		if(nAnswer == 3) 
+			return 1;
+		else if(nAnswer != 3) {
+			story->life--;
+			printf ("Incorrect answer! Try again..\n");
+			printf("%s\n%s\n%s\n%s\n",
+					"[1] 37 years",
+					"[2] 1 year",
+					"[3] 259 years",
+					"[4] None of the above.");
+		}
+	} while(nAnswer != 3);			   
 	return 0;
 }
 

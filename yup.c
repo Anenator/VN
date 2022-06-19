@@ -11,13 +11,9 @@ Eros Aneelouv A. Gonzaga, DLSU ID# 12120952
 int main() 
 {
 	//Variables
-	int i;
-	int over;
 	int nChoice;
-	int Flag;
-	int nLife = 3;
-	NovelData story, *temp;
-	temp = &story;
+	int Flag = 0;
+	NovelData story;
 
 
 
@@ -35,19 +31,23 @@ int main()
 
 	Introduction ();
 	NameSelection (&story);
-	Hall ();
+	Hall (&story);
+
 	nChoice = HallChoice ();
+
 	if (nChoice == 1){
-       Classroom ();
-	   InvestigateLockers ();
-	}
-	else if (nChoice == 2){
-		Library ();
-	}
-	
-	
+		Classroom (&story);
+	   	InvestigateLockers ();
+	} else if (nChoice == 2){
+		Library (&story);
+		if (CheckBookshelves () == 1){
+      		InvestigateBookShelvesTRUE(&story);
+	  	nQuiz (&story);
+	} else Light(&story);
+	PickUp (Flag);
 
-	printf("");
+		
 
+	}
 	return 0;
 }
