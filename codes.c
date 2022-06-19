@@ -1,4 +1,3 @@
-
 #include "utils.h"
 
 void promptName (NovelData *story){
@@ -121,6 +120,19 @@ void Library (){
 }
 
 
+int PickUp() {
+  int nChoice;
+do	
+  {
+	printf("Do you wish to pick it up?\n");
+	printf("1) Yes\n");
+	printf("2) No\n");
+	scanf("%d", &nChoice);
+  } while (nChoice != 1 && nChoice != 2);
+ 
+ return nChoice;
+}
+
 //Endings
 int OkEnding1 (){
 	int over;
@@ -221,6 +233,7 @@ int GoodEnding (){
 
 
 
+
 // check sleep function : https://linuxhint.com/sleep-function-c/ 
 int nQuiz (){
 int nWhichQuiz = 0;
@@ -248,7 +261,7 @@ int nFirstArithmeticPuzzle (NovelData *story){
 				   "[3] 259 years",
 				   "[4] None of the above.");
 				   scanf("%d",nAnswer);
-	if(nAnswer == 3) return TRUE;
+	if(nAnswer == 3) return 1;
 	while(nAnswer != 3)
 	{
 		story->character.life--;
@@ -259,7 +272,7 @@ int nFirstArithmeticPuzzle (NovelData *story){
 				   "[4] None of the above.");
 				   scanf("%d",nAnswer);
 	};
-	return FALSE;
+	return 0;
 }
 
 int nSecondArithmeticPuzzle (){
