@@ -18,9 +18,10 @@ void Introduction (){
 	printf("It details a ritual that can stop the widowed woman once and for all...\n");
 	printf("What's the worst thing that could happen?\n");
 }
-void NameSelection (){
+void NameSelection (name[]){
+	string[]
 	printf("The class photographer named\n");
-	scanf("%s",nNameChecker ((name[i])))
+	scanf("%s",nNameChecker ((name[i])));
 	printf("stays late at school to investigate the case of a missing classmate...\n");
 	printf("Little does %s know he/she is not alone in the building…\n",(name[i]));
 
