@@ -58,7 +58,7 @@ void FindChalkTRUE(NovelData *story);
 int Library (NovelData *story);
 int CheckBookshelves ();
 void Light (NovelData *story);
-int PickUp (int nChoice);
+int PickUp ();
 int InvestigateBookShelvesTRUE(NovelData *story);
 int nNameChecker (); 
 int nFirstLogicalPuzzle (NovelData *story);

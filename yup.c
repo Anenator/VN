@@ -15,7 +15,7 @@ int main()
 	int nFlag = 0;
 	int temp = 0;
 	NovelData story;
-
+	story.life = 3;
 
 
 	srand(time(NULL)); // randomizes seed
@@ -39,13 +39,26 @@ int main()
 	if (nChoice == 1){
 		Classroom(&story);
 		if (InvestigateLockers() == 1){	
-			if (InvestigateLockerA == 1){
+			if (InvestigateLockerA() == 1){
 				InvestigateLockerATRUE(&story);
-				//Find bracelet
+				if (PickUp() == 1)
+					OkEnding1(&story);
+				else
+					TragicEnding(&story);
 			}
-			else if (InvestigateLockerB == 1){
+			else if (InvestigateLockerB() == 1){
 				InvestigateLockerBTRUE(&story);
-				nFlag+= PickUp(nFlag);
+				if (PickUp() == 1){
+					nFlag+= 1;
+					FindChalkTRUE()
+				}
+				else if(PickUp() == 0){
+					if (nQuiz(&story))
+						OkEnding2(&story);
+					else
+						BadEnding1(&story);
+				}
+				
 			}
 			else {
 				if (nQuiz(&story))

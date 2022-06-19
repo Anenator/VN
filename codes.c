@@ -113,8 +113,7 @@ do
 
 void FindChalkTRUE(NovelData *story){
 	printf("After %s picked up the chalk...\n", (story->name));
-printf("%s silently walked outside of the classroom and went to the library.\n", (story->name));
-	
+	printf("%s silently walked outside of the classroom and went to the library.\n", (story->name));
 } 
 
 void InvestigateLockerBTRUE(NovelData *story){
@@ -165,7 +164,8 @@ void BeforeScissorLady(NovelData *story){
 	printf("It is time to face the Scissor Lady\n");
 }
 
-int PickUp (int nChoice){
+int PickUp (){
+	int nChoice = 0;
 	do	
 	{
 		printf("Do you wish to pick it up?\n");
@@ -187,7 +187,6 @@ int InvestigateLockerATRUE(NovelData *story){
 	printf("Some object caught %s's eye...\n",(story->name));
 	printf("On the table of one of %s’s classmates that disappeared...\n",(story->name));
 	printf("Was a bracelet made by their mother.\n");
-	printf("It turned out to be a candle.\n");
 	
 	return 0;
 }
@@ -305,7 +304,7 @@ int GoodEnding (NovelData *story){
 
 
 
-
+//Puzzles
 // check sleep function : https://linuxhint.com/sleep-function-c/ 
 int nQuiz (NovelData *story){
 int nWhichQuiz = 0;
