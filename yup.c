@@ -29,7 +29,7 @@ int main() {
 	{
 		
 		printf("%c", phrase[i]);
-		sleep (1);
+		Sleep (1);
 	}
 	int Flag;
 	int nLife = 3;
